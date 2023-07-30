@@ -163,7 +163,7 @@ const VideoCall = ({ socket, whoami }) => {
         <section className="">
                 <div className="video w-full h-full">
                     {stream && !callEnded ?
-                        <video playsInline muted ref={userVideo} autoPlay style={{ width: "850px" }} />
+                        <video playsInline ref={userVideo} autoPlay style={{ width: "850px" }} />
                         : null}
                 </div>
         </section>
