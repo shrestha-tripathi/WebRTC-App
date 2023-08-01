@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { styles } from "../style";
 import { navLinks } from '../constants';
 import { webrtc as logo, menu, close } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("Video Call");
   const [toggle, setToggle] = useState(false);
+  const navLocation = useLocation();
   return (
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
@@ -33,7 +34,7 @@ const Navbar = () => {
             <li
               key={link.id}
               className={`${
-                active === link.title
+                navLocation.pathname.includes(link.id)
                   ? "text-white"
                   : "text-slate-400"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
@@ -61,7 +62,7 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <li
                   key={link.id}
-                  className={`${active === link.title
+                  className={`${navLocation.pathname.includes(link.id)
                       ? "text-white"
                       : "text-slate-400"
                     } font-poppins font-medium cursor-pointer text-[16px]`}
